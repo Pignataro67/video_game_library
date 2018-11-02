@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import VideoGames from './components/VideoGames'
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1>Video Game Library</h1>
+        <h1>Welcome to the Video Game Library</h1>
+        <VideoGames />
       </div>
     );
   }
