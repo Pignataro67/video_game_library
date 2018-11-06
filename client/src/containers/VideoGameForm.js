@@ -73,5 +73,10 @@ class videoGameForm extends Component {
       )
   }
 
-
 }
+
+const mapDispatchToProps = dispatch => {
+  return {actions: bindActionCreators(actions, dispatch)}
+}
+
+export default connect(mapDispatchToProps)(VideoGameForm)
