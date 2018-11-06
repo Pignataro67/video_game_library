@@ -1,9 +1,10 @@
 export default (state = [], action) => {
     switch (action.type) {
         case 'FETCH_VIDEO_GAMES':
-          return action.videoGames 
+          return action.videoGames
+        case 'ADD_VIDEO_GAME':
+          return [...state, action.videoGame]
         default:
-          // console.log('returning default state')
-        return state
+          return state
     }
 }
