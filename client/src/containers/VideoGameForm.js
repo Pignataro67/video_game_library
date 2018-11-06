@@ -37,7 +37,25 @@ class videoGameForm extends Component {
               name='name'
               value={this.state.name}
               />
+            </div> 
+            <div>
+            <label>Age Range: </label>
+            <input
+              type='text'
+              onChange={e => this.handleChange(e)}
+              name='age_range'
+              value={this.state.age_range}
+              />
             </div>
+            <div>
+            <label>Pic URL: </label>
+            <input
+              type='text'
+              onChange={e => this.handleChange(e)}
+              name='pic_url'
+              value={this.state.pic_url}
+              />
+            </div>     
         </form>
       </div>
       )
