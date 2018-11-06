@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { createVideoGame } from '../actions/videoGameActions'
-// import { addVideoGame } from '../actions/videoGameActions'
+// import { createVideoGame } from '../actions/videoGameActions'
 import { bindActionCreators } from 'redux'
-import * as actions from '../actions/videoGameActions'
+// import * as actions from '../actions/videoGameActions'
+import { createVideoGame } from '../actions/videoGameActions'
 
 class videoGameForm extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
       name: '',
       age_range: '',
@@ -24,8 +24,9 @@ class videoGameForm extends Component {
 
   handleSubmit = e => {
     e.preventDefault()
-    const { actions } = this.props
-    actions.createVideoGame(e)
+    // const { actions } = this.props
+    // actions.createVideoGame(e)
+    this.props.createVideoGame(this.state)
   }
 
   render() {
@@ -78,8 +79,8 @@ class videoGameForm extends Component {
 
 }
 
-const mapDispatchToProps = dispatch => {
-  return {actions: bindActionCreators(actions, dispatch)}
-}
+// const mapDispatchToProps = dispatch => {
+//   return {actions: bindActionCreators(actions, dispatch)}
+// }
 
-export default connect(mapDispatchToProps)(VideoGameForm)
+export default connect(null, { createVideoGame })(VideoGameForm)
