@@ -55,7 +55,19 @@ class videoGameForm extends Component {
               name='pic_url'
               value={this.state.pic_url}
               />
-            </div>     
+            </div>
+            <div>
+            <label>Description: </label>
+            <textarea
+              type='text'
+              onChange={e => this.handleChange(e)}
+              name='description'
+              value={this.state.description}
+              />
+            </div>
+            <div>
+              <input type='submit' />
+            </div>      
         </form>
       </div>
       )
