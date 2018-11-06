@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { addVideoGame } from '../actions/videoGameActions'
+import { createVideoGame } from '../actions/videoGameActions'
+// import { addVideoGame } from '../actions/videoGameActions'
 import { bindActionCreators } from 'redux'
 import * as actions from '../actions/videoGameActions'
 
@@ -23,6 +24,8 @@ class videoGameForm extends Component {
 
   handleSubmit = e => {
     e.preventDefault()
+    const { actions } = this.props
+    actions.createVideoGame(e)
   }
 
   render() {
