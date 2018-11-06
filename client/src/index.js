@@ -1,8 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
-import { Provider } from 'react-redux'
+import App from './containers/App';
+import rootReducer from './reducers';
+import thunk from 'redux-thunk';
+import { createStore, applyMiddleware } from 'redux';
+import { Provider } from 'react-redux';
 
 // import * as serviceWorker from './serviceWorker';
 
@@ -13,8 +16,13 @@ import { Provider } from 'react-redux'
 // // Learn more about service workers: http://bit.ly/CRA-PWA
 // serviceWorker.unregister();
 
+const store = createStore(rootReducer, 
+window.__REDUX_DEVTOOLS_EXTENSION__&& window.__REDUX_DEVTOOLS_EXTENSION__(),
+applyMiddleware(thunk),
+);
+
 ReactDOM.render(
-  <Provider library={library}>
+  <Provider store={store}>
     <App />
-  </Provider>,
+  </Provider>, 
   document.getElementById('root'));
