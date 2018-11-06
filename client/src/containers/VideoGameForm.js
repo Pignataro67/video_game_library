@@ -15,5 +15,33 @@ class videoGameForm extends Component {
     }
   }
 
-  
+  handleChange = e => {
+    this.setState({
+      [e.target.name]: e.target.value
+    })
+  }
+
+  handleSubmit = e => {
+    e.preventDefault()
+  }
+
+  render() {
+    return (
+      <div>
+        <form onSubmit={e => this.handleSubmit(e)}>
+          <div>
+            <label>Video Game Name: </label>
+            <input
+              type='text'
+              onChange={e => this.handleChange(e)}
+              name='name'
+              value={this.state.name}
+              />
+            </div>
+        </form>
+      </div>
+      )
+  }
+
+
 }
