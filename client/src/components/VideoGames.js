@@ -39,3 +39,16 @@ class VideoGames extends Component {
       )
     }
   }
+
+  const mapStateToProps = state => {
+    console.log("this is your state")
+    console.log(state.videoGames)
+    return { videoGames: state.videoGames }
+  }
+
+  const mapDispatchToProps = dispatch => {
+    return {actions: bindActionCreators(actions, dispatch)}
+  }
+
+  export default connect(mapStateToProps, mapDispatchToProps)(VideoGames)
+
