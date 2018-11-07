@@ -6,7 +6,7 @@ import { connect } from 'react-redux'
 // import * as actions from '../actions/videoGameActions'
 import { createVideoGame } from '../actions/videoGameActions'
 
-class videoGameForm extends Component {
+class VideoGameForm extends Component {
   constructor(props) {
     super(props)
     this.state = {
