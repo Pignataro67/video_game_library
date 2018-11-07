@@ -25,3 +25,13 @@ class VideoGamesPage extends Component {
       )
     }
   }
+
+  const mapStateToProps = state => {
+    return { videoGames: state.videoGames }
+  }
+
+  const mapDispatchToProps = dispatch => {
+    return {actions: bindActionCreators(actions, dispatch)}
+  }
+
+  export default connect(mapStateToProps, mapDispatchToProps)(VideoGamesPage)
