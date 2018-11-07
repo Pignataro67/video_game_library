@@ -1,9 +1,9 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const VideoGameCard = ({ videoGame }) =>
  <div key={videoGame.id} className='container text-center'>
   <Link to={`/videoGames/${videoGame.id}`}>{videoGame}</Link>
-   {/* <p>Video Game Name: {videoGame.name}</p> */}
    <p>Age Range: {videoGame.age_range}</p>
    <p>Description: {videoGame.description}</p>
    {videoGame.pic_url? (
