@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
+import { Redirect } from 'react-router'
 import { connect } from 'react-redux'
 // import { createVideoGame } from '../actions/videoGameActions'
-import { bindActionCreators } from 'redux'
+// import { bindActionCreators } from 'redux'
 // import * as actions from '../actions/videoGameActions'
 import { createVideoGame } from '../actions/videoGameActions'
 
@@ -12,24 +13,29 @@ class videoGameForm extends Component {
       name: '',
       age_range: '',
       pic_url: '',
-      description: ''
+      description: '',
+      sendRedirect: false
     }
   }
 
   handleChange = e => {
+    const {name, value, checked, type } = e.target
     this.setState({
-      [e.target.name]: e.target.value
+      [name]: type === 'checkbox' ? checked : value
+      // [e.target.name]: e.target.value
     })
   }
 
   handleSubmit = e => {
     e.preventDefault()
-    // const { actions } = this.props
+    const { createVideoGame } = this.props
     // actions.createVideoGame(e)
-    this.props.createVideoGame(this.state)
+    createVideoGame(this.state)
+    this.setState({ sendRedirect: true })
   }
 
   render() {
+    const { sendRedirect } = this.state
     return (
       <div>
         <form onSubmit={e => this.handleSubmit(e)}>
@@ -73,6 +79,9 @@ class videoGameForm extends Component {
               <input type='submit' />
             </div>      
         </form>
+        {sendRedirect && (
+          <Redirect to='/videoGames' />
+        )}
       </div>
       )
   }
