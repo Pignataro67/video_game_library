@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import VideoGames from '../containers/VideoGameList'
+import VideoGamesPage from '../containers/VideoGamesPage'
 import Home from '../components/Home'
 import NavBar from '../components/NavBar'
 import VideoGameForm from '../containers/VideoGameForm'
@@ -12,8 +12,8 @@ class App extends Component {
         <div>
           <NavBar />
           <Route exact path='/' component={Home} />
-          <Route exact path='/videoGames' component={VideoGames} />
-          <Route exact path='/new' component={VideoGameForm} />
+          <Route exact path='/videoGames' component={VideoGamesPage} />
+          <Route exact path='/videoGames/new' component={VideoGameForm} />
         </div>
       </Router>
     );
