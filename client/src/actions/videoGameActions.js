@@ -1,6 +1,6 @@
 import fetch from 'isomorphic-fetch';
 
-const url = 'api/videoGames'
+const url = '/api/videoGames'
 
 const getVideoGames = videoGames => {
   return {
@@ -25,5 +25,18 @@ export const fetchVideoGames = () => {
 }
 
 export const createVideoGame = videoGame => {
-  
+  return dispatch => {
+    return fetch(url, {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(videoGame)
+    })
+      .then(res => res.json())
+      .then(videoGame => {
+        dispatch(addVideoGame(videoGame))
+      })
+  }
 }
