@@ -4,41 +4,77 @@ import { connect } from 'react-redux'
 // import { createVideoGame } from '../actions/videoGameActions'
 // import { bindActionCreators } from 'redux'
 // import * as actions from '../actions/videoGameActions'
-import { createVideoGame } from '../actions/videoGameActions'
+import { createVideoGame, fetchVideoGame, updateVideoGame } from '../actions/videoGameActions'
 
 class VideoGameForm extends Component {
   constructor(props) {
     super(props)
+
+    const videoGame = this.props.videoGame
     this.state = {
-      name: '',
-      age_range: '',
-      pic_url: '',
-      description: '',
+      id: videoGame ? videoGame.id : null,
+      name: videoGame ? videoGame.name : '',
+      age_range: age_range ? videoGame.age_range : '',
+      pic_url: pic_url ? videoGame.pic_url : '',
+      description: description ? videoGame.description : '',
       sendRedirect: false
     }
   }
 
-  handleChange = e => {
-    const {name, value, checked, type } = e.target
+  componentWillReceiveProps = nextProps => {
     this.setState({
-      [name]: type === 'checkbox' ? checked : value
+      name: nextProps.videoGame.name,
+      age_range: nextProps.videoGame.pic_url,
+      pic_url: nextProps.videoGame.pic_url,
+      description: nextProps.videoGame.description
+    })
+  }
+
+  componentDidMount = () => {
+    const id = this.props.match.params.videoGameId
+    if (id) {
+      this.props.fetchVideoGame(id)
+    }
+  }
+
+  handleChange = e => {
+    const {name, value } = e.target
+    this.setState({
+      [name]: value
       // [e.target.name]: e.target.value
     })
   }
 
   handleSubmit = e => {
     e.preventDefault()
-    const { createVideoGame } = this.props
-    // actions.createVideoGame(e)
-    createVideoGame(this.state)
+    // const { createVideoGame } = this.props
+    // // actions.createVideoGame(e)
+    // createVideoGame(this.state)
+    const { createVideoGame, updateVideoGame } = this.props
+    const { id } = this.state
+
+    if (id) {
+      // updateVideoGame(this.state, id)
+      console.log(id)
+      console.log('fire an updated vg')
+      updateVideoGame(this.state)
+    } else {
+      console.log(id)
+      console.log('fire an updated vg')
+      createVideoGame(this.state)
+    }
     this.setState({ sendRedirect: true })
   }
 
   render() {
     const { sendRedirect } = this.state
+    // const { id } = this.props.VideoGame
+    // console.log(this.props.VideoGame.id)
+    const { id } = this.props.videoGame
+
     return (
       <div>
-        <form onSubmit={e => this.handleSubmit(e)}>
+        <form onSubmit={e => this.handleSubmit(e, id ? id : false)}>
           <div>
             <label>Video Game Name: </label>
             <input
@@ -92,4 +128,23 @@ class VideoGameForm extends Component {
 //   return {actions: bindActionCreators(actions, dispatch)}
 // }
 
-export default connect(null, { createVideoGame })(VideoGameForm)
+const mapStateToProps =(state, myProps) => {
+  // conole.log('ran map')
+
+  const videoGame = state.videoGames.find(videoGame => videoGame.id === parseInt(myProps.match.params.videoGameId, 10))
+
+
+if (videoGame) {
+  // console.log('im if')
+  // console.log(videoGame)
+  return { videoGame }
+} else {
+  // console.log('im else')
+  // console.log(videoGame)
+  return {
+    videoGame: {}
+  }
+}
+}
+
+export default connect(mapStateToProps, { createVideoGame, fetchVideoGame, updateVideoGame})(VideoGameForm)
