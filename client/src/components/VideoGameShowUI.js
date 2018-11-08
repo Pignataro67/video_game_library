@@ -1,6 +1,7 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
-const VideoGameShowUI = ({ videoGame, handleOnClick, toggleEdit }) => 
+const VideoGameShowUI = ({ videoGame, handleDelete, toggleEdit }) => 
 
 <div className='container text center'>
          <h3>Name: {videoGame.name}</h3>
@@ -13,8 +14,8 @@ const VideoGameShowUI = ({ videoGame, handleOnClick, toggleEdit }) =>
   }
   <p>Description: {videogame.description}</p>
   <p>Age Range: {videoGame.age_range}</p>
-  <button onClick={this.deleteVideoGame}>Remove Video Game</button><br></br>
-  <button onClick={() => toggleEdit()}>Edit Video Game</button>
+  <button onClick={() => handleDelete(videoGame)}>Remove Video Game</button><br></br>
+  <button><Link to={`/videoGames/${videoGame.id}/edit`}>Edit</Link><br /></button>
 </div>
 
 export default VideoGameUI
