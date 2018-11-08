@@ -4,6 +4,8 @@ export default (state = [], action) => {
           return action.videoGames
         case 'ADD_VIDEO_GAME':
           return [...state, action.videoGame]
+        case 'DELETE_TOY':
+          return state.filter(videoGame => videoGame.id !== action.id)
         default:
           return state
     }
