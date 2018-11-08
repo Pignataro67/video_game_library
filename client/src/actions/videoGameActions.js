@@ -16,6 +16,13 @@ const addVideoGame = videoGame => {
   }
 }
 
+const removeVideoGame = id => {
+  return {
+    type: 'DELETE_VIDEO_GAME',
+    id
+  }
+}
+
 export const fetchVideoGames = () => {
   return dispatch => {
     return fetch(url)
@@ -38,5 +45,21 @@ export const createVideoGame = videoGame => {
       .then(videoGame => {
         dispatch(addVideoGame(videoGame))
       })
+  }
+}
+
+export const deleteVideoGame = videoGame => {
+  return dispatch => {
+    return fetch(url + `/${videoGame.id}`, {
+      method: 'DELETE'
+    })
+    .then(res => {
+      if (res.ok) {
+        dispatch(removeVideoGame(videoGame.id))
+      } else {
+        window.alert('ERROR, ERROR cannot delete video game')
+      }
+    })
+    .catch(error => console.log(error))
   }
 }
