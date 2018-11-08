@@ -3,7 +3,8 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as actions from '../actions/videoGameActions'
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import VideoGamesPage from '../containers/VideoGamesPage'
+// import VideoGamesPage from '../containers/VideoGamesPage'
+import VideoGamesList from '../components/VideoGamesList'
 import Home from '../components/Home'
 import NavBar from '../components/NavBar'
 import VideoGameForm from '../containers/VideoGameForm'
@@ -23,9 +24,11 @@ class App extends Component {
           <NavBar />
           <Route exact path='/' component={Home} />
           <Switch>
-            <Route exact path='/videoGames' component={VideoGamesPage} />
+            {/* <Route exact path='/videoGames' component={VideoGamesPage} /> */}
+    <Route exact path='/videoGames' render={(props) => <VideoGamesList videoGames={this.props.videoGames}/> } />
             <Route exact path='/videoGames/:videoGameId' component={VideoGameShow} />
             <Route exact path='/videoGames/new' component={VideoGameForm} />
+            <Route exact path='/videoGames/:videoGameId/edit' component={VideoGameForm} />
           </Switch>
         </div>
       </Router>
