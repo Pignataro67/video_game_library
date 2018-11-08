@@ -52,3 +52,21 @@ class VideoGameShow extends Component {
     )
   }
 }
+
+const mapStateToProps = (state, myProps) => {
+  const videoGame = state.videoGames.find(videoGame => videoGame.id === parseInt(myProps.match.params.videoGameId, 10))
+
+  if (videoGame) {
+    return { videoGame }
+  } else {
+    return {
+      videoGame: {}
+    }
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {actions: bindActionCreators(actions, dispatch)}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(VideoGameShow)
