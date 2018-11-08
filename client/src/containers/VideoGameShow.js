@@ -9,21 +9,38 @@ class VideoGameShow extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      videoGame: this.props.videoGame,
       sendRedirect: false,
       isEditing: false
     }
     this.toggleEdit = this.toggleEdit.bind(this)
   }
 
-  handleOnClick = videoGame => {
+  handleDelete = videoGame => {
     this.props.deleteVideoGame(videoGame)
     this.setState({ sendRedirect: true })
   }
 
   toggleEdit() {
-    console.log("Fire this in the hole!")
+    // console.log("Fire this in the hole!")
     this.setState({
       isEditing: !this.state.isEditing
+    })
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const { videoGame } = this.props
+    if (videoGame.id !== nextProps.videoGame.id) {
+      this.setState({ videoGame: nextProps.videoGame })
+    }
+  }
+
+  updateVideoGameState = e => {
+    const name = e.target.name
+    const videoGame = this.state.videoGame
+    videoGame[name] = e.target.value
+    return this.setState({
+      videoGame: videoGame
     })
   }
 
@@ -43,7 +60,7 @@ class VideoGameShow extends Component {
   return(
     <div>
       <VideoGameShowUI videoGame={videoGame} 
-        handleOnClick={this.handleOnClick}
+        handleOnClick={this.handleDelete}
         toggleEdit={this.toggleEdit} />
       {sendRedirect && (
         <Redirect to ='/videoGames' />
