@@ -33,4 +33,12 @@ class App extends Component {
   }
 }
 
-export default App
+const mapStateToProps = state => {
+  return { videoGames: state.videoGames }
+}
+
+const mapDispatchToProps = dispatch => {
+  return { actions: bindActionCreators(actions, dispatch)}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)
