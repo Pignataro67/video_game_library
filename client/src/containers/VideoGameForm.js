@@ -1,9 +1,5 @@
 import React, { Component } from 'react'
-import { Redirect } from 'react-router'
 import { connect } from 'react-redux'
-// import { createVideoGame } from '../actions/videoGameActions'
-// import { bindActionCreators } from 'redux'
-// import * as actions from '../actions/videoGameActions'
 import { createVideoGame, fetchVideoGame, updateVideoGame } from '../actions/videoGameActions'
 
 class VideoGameForm extends Component {
@@ -16,15 +12,14 @@ class VideoGameForm extends Component {
       name: videoGame ? videoGame.name : '',
       age_range: age_range ? videoGame.age_range : '',
       pic_url: pic_url ? videoGame.pic_url : '',
-      description: description ? videoGame.description : '',
-      sendRedirect: false
+      description: description ? videoGame.description : ''
     }
   }
 
   componentWillReceiveProps = nextProps => {
     this.setState({
       name: nextProps.videoGame.name,
-      age_range: nextProps.videoGame.pic_url,
+      age_range: nextProps.videoGame.age_range,
       pic_url: nextProps.videoGame.pic_url,
       description: nextProps.videoGame.description
     })
@@ -41,7 +36,6 @@ class VideoGameForm extends Component {
     const {name, value } = e.target
     this.setState({
       [name]: value
-      // [e.target.name]: e.target.value
     })
   }
 
@@ -55,12 +49,12 @@ class VideoGameForm extends Component {
 
     if (id) {
       // updateVideoGame(this.state, id)
-      console.log(id)
-      console.log('fire an updated vg')
+      // console.log(id)
+      // console.log('fire an updated vg')
       updateVideoGame(this.state)
     } else {
-      console.log(id)
-      console.log('fire an updated vg')
+      // console.log(id)
+      // console.log('fire an updated vg')
       createVideoGame(this.state)
     }
     this.setState({ sendRedirect: true })
@@ -72,8 +66,16 @@ class VideoGameForm extends Component {
     // console.log(this.props.VideoGame.id)
     const { id } = this.props.videoGame
 
+    if (sendRedirect) {
+      return (
+        <div>
+          {id ? <Redirect to ={`/videoGames/${id}`} /> : <Redirect to='/videoGames' />}
+        </div>
+      )
+    }
+
     return (
-      <div>
+      <div className='container text-center'>
         <form onSubmit={e => this.handleSubmit(e, id ? id : false)}>
           <div>
             <label>Video Game Name: </label>
@@ -115,9 +117,9 @@ class VideoGameForm extends Component {
               <input type='submit' />
             </div>      
         </form>
-        {sendRedirect && (
-          <Redirect to='/videoGames' />
-        )}
+        {/* {sendRedirect && (
+          <Redirect to={`/videoGames/${id}`} />
+        )} */}
       </div>
       )
   }
