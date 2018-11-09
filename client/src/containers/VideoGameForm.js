@@ -10,9 +10,9 @@ class VideoGameForm extends Component {
     this.state = {
       id: videoGame ? videoGame.id : null,
       name: videoGame ? videoGame.name : '',
-      age_range: age_range ? videoGame.age_range : '',
-      pic_url: pic_url ? videoGame.pic_url : '',
-      description: description ? videoGame.description : ''
+      age_range: videoGame ? videoGame.age_range : '',
+      pic_url: videoGame ? videoGame.pic_url : '',
+      description: videoGame ? videoGame.description : ''
     }
   }
 
@@ -41,38 +41,30 @@ class VideoGameForm extends Component {
 
   handleSubmit = e => {
     e.preventDefault()
-    // const { createVideoGame } = this.props
-    // // actions.createVideoGame(e)
-    // createVideoGame(this.state)
     const { createVideoGame, updateVideoGame } = this.props
     const { id } = this.state
 
     if (id) {
-      // updateVideoGame(this.state, id)
-      // console.log(id)
-      // console.log('fire an updated vg')
       updateVideoGame(this.state)
+      this.props.history.push(`/videoGames/${id}`)
     } else {
-      // console.log(id)
-      // console.log('fire an updated vg')
-      createVideoGame(this.state)
+      createVideoGame(this.state, this.props.history)
     }
-    this.setState({ sendRedirect: true })
   }
 
   render() {
-    const { sendRedirect } = this.state
+    const { id } = this.props.videoGame
     // const { id } = this.props.VideoGame
     // console.log(this.props.VideoGame.id)
-    const { id } = this.props.videoGame
+    // const { id } = this.props.videoGame
 
-    if (sendRedirect) {
-      return (
-        <div>
-          {id ? <Redirect to ={`/videoGames/${id}`} /> : <Redirect to='/videoGames' />}
-        </div>
-      )
-    }
+    // if (sendRedirect) {
+    //   return (
+    //     <div>
+    //       {id ? <Redirect to ={`/videoGames/${id}`} /> : <Redirect to='/videoGames' />}
+    //     </div>
+    //   )
+    // }
 
     return (
       <div className='container text-center'>
@@ -123,7 +115,6 @@ class VideoGameForm extends Component {
       </div>
       )
   }
-
 }
 
 // const mapDispatchToProps = dispatch => {
@@ -136,17 +127,17 @@ const mapStateToProps =(state, myProps) => {
   const videoGame = state.videoGames.find(videoGame => videoGame.id === parseInt(myProps.match.params.videoGameId, 10))
 
 
-if (videoGame) {
+  if (videoGame) {
   // console.log('im if')
   // console.log(videoGame)
-  return { videoGame }
-} else {
+    return { videoGame }
+  } else {
   // console.log('im else')
   // console.log(videoGame)
-  return {
-    videoGame: {}
+    return {
+      videoGame: {}
+    }
   }
-}
 }
 
 export default connect(mapStateToProps, { createVideoGame, fetchVideoGame, updateVideoGame})(VideoGameForm)
