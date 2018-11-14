@@ -1,27 +1,27 @@
 export default (state = [], action) => {
     switch (action.type) {
         case 'FETCH_VIDEO_GAMES':
-          return action.videoGames
+          return action.video_games
         case 'VIDEO_GAME_FETCHED':
-          const index = state.findIndex(videoGame => videoGame.id === action.videoGame.id)
+          const index = state.findIndex(video_game => video_game.id === action.video_game.id)
           if (index > -1) {
-            return state.map(videoGame => {
-              if (videoGame.id === action.videoGame.id) {
-                return action.videoGame
+            return state.map(video_game => {
+              if (video_game.id === action.video_game.id) {
+                return action.video_game
               } else {
-                return videoGame
+                return video_game
               }
             })
           } else {
-            return [...state, action.videoGame]
+            return [...state, action.video_game]
           }
-          
+
         case 'ADD_VIDEO_GAME':
-          return [...state, action.videoGame]
+          return [...state, action.video_game]
         case 'UPDATE_VIDEO_GAME':
-          return [...state.filter(videoGame => videoGame.id !== action.videoGame.id), action.videoGame]  
+          return state.map(video_game => video_game.id === action.video_game.id ? action.video_game : video_game)  
         case 'DELETE_TOY':
-          return state.filter(videoGame => videoGame.id !== action.id)
+          return state.filter(video_game => video_game.id !== action.id)
         default:
           return state
     }
