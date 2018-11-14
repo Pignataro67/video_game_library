@@ -15,10 +15,10 @@ const NavBar = () => {
       <div className="collapse navbar-collapse" id="navbarCollapse">
         <ul className="navbar-nav mr-auto">
           <li className="nav-item active">
-            <Link className="nav-link" to="/videoGames">Video Games <span className="sr-only">(current)</span></Link>
+            <Link className="nav-link" to="/video_games">Video Games <span className="sr-only">(current)</span></Link>
           </li>
           <li className="nav-item active">
-            <Link className="nav-link" to="/videoGames/new">New <span className="sr-only">(current)</span></Link>
+            <Link className="nav-link" to="/video_games/new">New <span className="sr-only">(current)</span></Link>
           </li>
         </ul>
       </div>
