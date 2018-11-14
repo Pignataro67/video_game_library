@@ -1,69 +1,34 @@
-import React from 'react'
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router'
-import { deleteVideoGame } from '../actions/videoGameActions'
+import { deleteVideoGame, updateVideoGame } from '../actions/videoGameActions'
 import VideoGameShowUI from '../components/VideoGameShowUI'
 
 class VideoGameShow extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      videoGame: this.props.videoGame,
+      video_game: this.props.video_game,
       sendRedirect: false,
-      isEditing: false
     }
-    this.toggleEdit = this.toggleEdit.bind(this)
   }
 
-  handleDelete = videoGame => {
-    this.props.deleteVideoGame(videoGame)
+  handleDelete = video_game => {
+    this.props.deleteVideoGame(video_game)
     this.setState({ sendRedirect: true })
   }
 
-  toggleEdit() {
-    // console.log("Fire this in the hole!")
-    this.setState({
-      isEditing: !this.state.isEditing
-    })
-  }
-
-  componentWillReceiveProps(nextProps) {
-    const { videoGame } = this.props
-    if (videoGame.id !== nextProps.videoGame.id) {
-      this.setState({ videoGame: nextProps.videoGame })
-    }
-  }
-
-  updateVideoGameState = e => {
-    const name = e.target.name
-    const videoGame = this.state.videoGame
-    videoGame[name] = e.target.value
-    return this.setState({
-      videoGame: videoGame
-    })
-  }
-
   render() {
-    const { sendRedirect, isEditing } = this.state
-    // console.log(this.myProps)
-    const { videoGame } = this.props
+    const { sendRedirect } = this.state
+  
+    const { video_game } = this.props
 
-    if (isEditing) {
-      return (
-        <div>
-          <h1>Please Edit Video Game</h1>
-        </div>
-      )
-    }
-    
   return(
     <div>
-      <VideoGameShowUI videoGame={videoGame} 
-        handleOnClick={this.handleDelete}
-        toggleEdit={this.toggleEdit} />
+      <VideoGameShowUI video_game={video_game} 
+        handleDelete={this.handleDelete} />
       {sendRedirect && (
-        <Redirect to ='/videoGames' />
+        <Redirect to ='/video_games' />
       )}
     </div>
     )
@@ -71,19 +36,19 @@ class VideoGameShow extends Component {
 }
 
 const mapStateToProps = (state, myProps) => {
-  const videoGame = state.videoGames.find(videoGame => videoGame.id === parseInt(myProps.match.params.videoGameId, 10))
+  const video_game = state.video_games.find(video_game => video_game.id === parseInt(myProps.match.params.video_gameId, 10))
 
-  if (videoGame) {
-    return { videoGame }
+  if (video_game) {
+    return { video_game }
   } else {
     return {
-      videoGame: {}
+      video_game: {}
     }
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return {actions: bindActionCreators(actions, dispatch)}
+const mapDispatchToProps = {
+  deleteVideoGame, updateVideoGame
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(VideoGameShow)
