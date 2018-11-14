@@ -6,27 +6,27 @@ class VideoGameForm extends Component {
   constructor(props) {
     super(props)
 
-    const videoGame = this.props.videoGame
+    const video_game = this.props.video_game
     this.state = {
-      id: videoGame ? videoGame.id : null,
-      name: videoGame ? videoGame.name : '',
-      age_range: videoGame ? videoGame.age_range : '',
-      pic_url: videoGame ? videoGame.pic_url : '',
-      description: videoGame ? videoGame.description : ''
+      id: video_game ? video_game.id : null,
+      name: video_game ? video_game.name : '',
+      age_range: video_game ? video_game.age_range : '',
+      pic_url: video_game ? video_game.pic_url : '',
+      description: video_game ? video_game.description : ''
     }
   }
 
   componentWillReceiveProps = nextProps => {
     this.setState({
-      name: nextProps.videoGame.name,
-      age_range: nextProps.videoGame.age_range,
-      pic_url: nextProps.videoGame.pic_url,
-      description: nextProps.videoGame.description
+      name: nextProps.video_game.name,
+      age_range: nextProps.video_game.age_range,
+      pic_url: nextProps.video_game.pic_url,
+      description: nextProps.video_game.description
     })
   }
 
   componentDidMount = () => {
-    const id = this.props.match.params.videoGameId
+    const id = this.props.match.params.video_gameId
     if (id) {
       this.props.fetchVideoGame(id)
     }
@@ -46,26 +46,15 @@ class VideoGameForm extends Component {
 
     if (id) {
       updateVideoGame(this.state)
-      this.props.history.push(`/videoGames/${id}`)
+      this.props.history.push(`/video_games/${id}`)
     } else {
       createVideoGame(this.state, this.props.history)
     }
   }
 
   render() {
-    const { id } = this.props.videoGame
-    // const { id } = this.props.VideoGame
-    // console.log(this.props.VideoGame.id)
-    // const { id } = this.props.videoGame
-
-    // if (sendRedirect) {
-    //   return (
-    //     <div>
-    //       {id ? <Redirect to ={`/videoGames/${id}`} /> : <Redirect to='/videoGames' />}
-    //     </div>
-    //   )
-    // }
-
+    const { id } = this.props.video_game
+    
     return (
       <div className='container text-center'>
         <form onSubmit={e => this.handleSubmit(e, id ? id : false)}>
@@ -109,33 +98,21 @@ class VideoGameForm extends Component {
               <input type='submit' />
             </div>      
         </form>
-        {/* {sendRedirect && (
-          <Redirect to={`/videoGames/${id}`} />
-        )} */}
       </div>
       )
   }
 }
 
-// const mapDispatchToProps = dispatch => {
-//   return {actions: bindActionCreators(actions, dispatch)}
-// }
-
 const mapStateToProps =(state, myProps) => {
-  // conole.log('ran map')
 
-  const videoGame = state.videoGames.find(videoGame => videoGame.id === parseInt(myProps.match.params.videoGameId, 10))
+  const video_game = state.video_games.find(video_game => video_game.id === parseInt(myProps.match.params.video_gameId, 10))
 
 
-  if (videoGame) {
-  // console.log('im if')
-  // console.log(videoGame)
-    return { videoGame }
+  if (video_game) {
+    return { video_game }
   } else {
-  // console.log('im else')
-  // console.log(videoGame)
     return {
-      videoGame: {}
+      video_game: {}
     }
   }
 }
