@@ -11,7 +11,7 @@ class VideoGamesController < ApplicationController
   end
   
   def create
-      video_game = Video_game.new(video_game_params)
+      video_game = VideoGame.new(video_game_params)
     if video_game.save
       render json: video_game
     else
@@ -28,7 +28,9 @@ class VideoGamesController < ApplicationController
   end
 
   def destroy
+    Rails.logger.debug @video_games
     if @video_game.destroy
+      Rails.logger.debug 'successfully ddestroyed'
       render status: 204
     else
       render json: { message: "ERROR, ERROR cannot destroy"}, status: 400
@@ -42,6 +44,6 @@ class VideoGamesController < ApplicationController
   end
 
   def set_video_game
-    @video_game = Video_game.find_by(id: params[:id])
+    @video_game = VideoGame.find_by(id: params[:id])
   end
 end
