@@ -25,8 +25,8 @@ class App extends Component {
           <Route exact path='/' component={Home} />
           <Switch>
     <Route exact path='/video_games' render={(props) => <VideoGamesList video_games={this.props.video_games}/> } />
-            <Route exact path='/video_games/:video_gameId' component={VideoGameShow} />
             <Route exact path='/video_games/new' component={VideoGameForm} />
+            <Route exact path='/video_games/:video_gameId' component={VideoGameShow} />
             <Route exact path='/video_games/:video_gameId/edit' component={VideoGameForm} />
           </Switch>
         </div>
