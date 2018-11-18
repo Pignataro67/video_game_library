@@ -20,7 +20,7 @@ export default (state = [], action) => {
           return [...state, action.video_game]
         case 'UPDATE_VIDEO_GAME':
           return state.map(video_game => video_game.id === action.video_game.id ? action.video_game : video_game)  
-        case 'DELETE_TOY':
+        case 'DELETE_VIDEO_GAME':
           return state.filter(video_game => video_game.id !== action.id)
         default:
           return state
