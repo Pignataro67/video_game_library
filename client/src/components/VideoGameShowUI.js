@@ -8,7 +8,7 @@ const VideoGameShowUI = ({ video_game, handleDelete, }) =>
          {video_game.pic_url? (
      <img src={`${video_game.pic_url}`} style={{height: '250px', width: '250px', margin: 'auto'}} alt={video_game.name} />
    ) : (
-     <img src=''
+     <img src='x.kinja-static.com/assets/images/logos/placeholders/default.png'
      style={{height: '250px', width: '250px', margin: 'auto'}} alt={video_game.name} />
    )
   }
