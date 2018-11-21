@@ -1,9 +1,9 @@
 import React from 'react'
 import VideoGameCard from './VideoGameCard'
 
-const VideoGamesList = ({ video_games }) => {
-  const renderVideoGames = video_games.map((video_game, i) =>
-    <VideoGameCard key={i} video_game={video_game} />
+const VideoGamesList = ({ videoGames }) => {
+  const renderVideoGames = videoGames.map((videoGame, i) =>
+    <VideoGameCard key={i} videoGame={videoGame} />
   )
 
   return (
