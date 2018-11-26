@@ -5,16 +5,16 @@ import { Link } from 'react-router-dom'
 class VideoGameCard extends Component {
   
   render() {
-    const { video_game } = this.props
+    const { videoGame } = this.props
 
     return (
- <div key={video_game.id} className='col-md-3 VideoGameCard text-center rounded'>
-  <Link className='link' to={`/video_games/${video_game.id}`}>{video_game.name}</Link><br />
-   {video_game.pic_url? (
-     <img className='image' style={{height: '250px', width: '250px', margin: 'auto'}} src={`${video_game.pic_url}`} alt={video_game.name} />
+ <div key={videoGame.id} className='col-md-3 VideoGameCard text-center rounded'>
+  <Link className='link' to={`/video_games/${videoGame.id}`}>{videoGame.name}</Link><br />
+   {videoGame.pic_url? (
+     <img className='image' style={{height: '250px', width: '250px', margin: 'auto'}} src={`${videoGame.pic_url}`} alt={videoGame.name} />
    ) : (
      <img src='x.kinja-static.com/assets/images/logos/placeholders/default.png'
-      style={{height: '250px', width: '250px', margin: 'auto'}} alt={video_game.name}/>
+      style={{height: '250px', width: '250px', margin: 'auto'}} alt={videoGame.name}/>
    )
   }
 
