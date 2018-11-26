@@ -12,10 +12,10 @@ import VideoGameShow from './VideoGameShow'
 
 class App extends Component {
 
-  componentDidMount() {
+ componentDidMount() {
     const { actions } = this.props
     actions.fetchVideoGames()
-  }
+  }   
 
   render() {
     return (
@@ -24,10 +24,10 @@ class App extends Component {
           <NavBar />
           <Route exact path='/' component={Home} />
           <Switch>
-    <Route exact path='/video_games' render={(props) => <VideoGamesList video_games={this.props.video_games}/> } />
+    <Route exact path='/video_games' render={(props) => <VideoGamesList videoGames={this.props.videoGames}/> } />
             <Route exact path='/video_games/new' component={VideoGameForm} />
-            <Route exact path='/video_games/:video_gameId' component={VideoGameShow} />
-            <Route exact path='/video_games/:video_gameId/edit' component={VideoGameForm} />
+            <Route exact path='/video_games/:videoGameId' component={VideoGameShow} />
+            <Route exact path='/video_games/:videoGameId/edit' component={VideoGameForm} />
           </Switch>
         </div>
       </Router>
@@ -36,7 +36,7 @@ class App extends Component {
 }
 
 const mapStateToProps = state => {
-  return { video_games: state.video_games }
+  return { videoGames: state.videoGames }
 }
 
 const mapDispatchToProps = dispatch => {
