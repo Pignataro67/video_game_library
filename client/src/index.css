@@ -10,6 +10,28 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.VideoGameCard {
+  padding-bottom: 30px;
+  border-style: solid;
+  border-width: thin;
+  margin: 10px;
+  border-color: #969696;
+}
+
+.link {
+  color: red;
+}
+
+.btn {
+  background-color: blue;
+  color: white;
+  border: none;
+}
+
+.home-image {
+  max-width: 65%;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
