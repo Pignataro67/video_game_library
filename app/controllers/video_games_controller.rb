@@ -28,9 +28,7 @@ class VideoGamesController < ApplicationController
   end
 
   def destroy
-    Rails.logger.debug @video_games
     if @video_game.destroy
-      Rails.logger.debug 'successfully ddestroyed'
       render status: 204
     else
       render json: { message: "ERROR, ERROR cannot destroy"}, status: 400
