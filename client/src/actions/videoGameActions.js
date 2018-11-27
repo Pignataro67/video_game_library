@@ -1,32 +1,34 @@
 import fetch from 'isomorphic-fetch';
 
+export const FETCH_VIDEO_GAMES = 'FETCH_VIDEO_GAMES'
+
 const url = '/api/video_games'
 
-const getVideoGames = video_games => {
+const getVideoGames = videoGames => {
   return {
     type: 'FETCH_VIDEO_GAMES',
-    video_games
+    videoGames
   }
 }
 
-const videoGameFetched = video_game => {
+const videoGameFetched = videoGame => {
   return {
     type: 'VIDEO_GAME_FETCHED',
-    video_game
+    videoGame
   }
 }
 
-const addVideoGame = video_game => {
+const addVideoGame = videoGame => {
   return {
     type: 'ADD_VIDEO_GAME',
-    video_game
+    videoGame
   }
 }
 
-const editVideoGame = video_game => {
+const editVideoGame = videoGame => {
   return {
     type: 'UPDATE_VIDEO_GAME',
-    video_game
+    videoGame
   }
 }
 
@@ -41,7 +43,7 @@ export const fetchVideoGames = () => {
   return dispatch => {
     return fetch(url)
       .then(res => res.json())
-      .then(video_games => dispatch(getVideoGames(video_games)))
+      .then(videoGames => dispatch(getVideoGames(videoGames)))
   }
 }
 
@@ -50,11 +52,12 @@ export const fetchVideoGame = id => {
   return dispatch => {
     fetch(`/api/video_games/${id}`)
       .then(res => res.json())
-      .then(video_game => dispatch(videoGameFetched(video_game)))
+      .then(videoGame => dispatch(videoGameFetched(videoGame)))
   }
 }
 
 export const createVideoGame = (video_game, history) => {
+  console.log('C')
   return dispatch => {
     return fetch(url, {
       method: 'POST',
@@ -66,10 +69,12 @@ export const createVideoGame = (video_game, history) => {
     })
       .then(res => res.json())
       .then(video_game => {
+        console.log('D')
         dispatch(addVideoGame(video_game))
       })
       .catch(error => console.log(error))
   }
+  // console.log("E")
 }
 
 export const updateVideoGame = video_game => {
