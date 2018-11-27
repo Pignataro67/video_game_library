@@ -6,27 +6,28 @@ class VideoGameForm extends Component {
   constructor(props) {
     super(props)
 
-    const video_game = this.props.video_game
+    const { videoGame } = this.props
+
     this.state = {
-      id: video_game ? video_game.id : null,
-      name: video_game ? video_game.name : '',
-      age_range: video_game ? video_game.age_range : '',
-      pic_url: video_game ? video_game.pic_url : '',
-      description: video_game ? video_game.description : ''
+      id: videoGame ? videoGame.id : null,
+      name: videoGame ? videoGame.name : '',
+      age_range: videoGame ? videoGame.age_range : '',
+      pic_url: videoGame ? videoGame.pic_url : '',
+      description: videoGame ? videoGame.description : ''
     }
   }
 
   componentWillReceiveProps = nextProps => {
     this.setState({
-      name: nextProps.video_game.name,
-      age_range: nextProps.video_game.age_range,
-      pic_url: nextProps.video_game.pic_url,
-      description: nextProps.video_game.description
+      name: nextProps.videoGame.name,
+      age_range: nextProps.videoGame.age_range,
+      pic_url: nextProps.videoGame.pic_url,
+      description: nextProps.videoGame.description
     })
   }
 
   componentDidMount = () => {
-    const id = this.props.match.params.video_gameId
+    const id = this.props.match.params.videoGameId
     if (id) {
       this.props.fetchVideoGame(id)
     }
@@ -41,6 +42,7 @@ class VideoGameForm extends Component {
 
   handleSubmit = e => {
     e.preventDefault()
+
     const { createVideoGame, updateVideoGame } = this.props
     const { id } = this.state
 
@@ -48,12 +50,15 @@ class VideoGameForm extends Component {
       updateVideoGame(this.state)
       this.props.history.push(`/video_games/${id}`)
     } else {
+      console.log('A')
       createVideoGame(this.state, this.props.history)
+      console.log('B')
+      this.props.history.push('/video_games')
     }
   }
 
   render() {
-    const { id } = this.props.video_game
+    const { id } = this.props.videoGame
     
     return (
       <div className='container text-center'>
@@ -105,14 +110,14 @@ class VideoGameForm extends Component {
 
 const mapStateToProps =(state, myProps) => {
 
-  const video_game = state.video_games.find(video_game => video_game.id === parseInt(myProps.match.params.video_gameId, 10))
+  const videoGame = state.videoGames.find(videoGame => videoGame.id === parseInt(myProps.match.params.videoGameId, 10))
 
 
-  if (video_game) {
-    return { video_game }
+  if (videoGame) {
+    return { videoGame }
   } else {
     return {
-      video_game: {}
+      videoGame: {}
     }
   }
 }
