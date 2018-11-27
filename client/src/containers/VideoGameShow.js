@@ -8,24 +8,24 @@ class VideoGameShow extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      video_game: this.props.video_game,
+      videoGame: this.props.videoGame,
       sendRedirect: false,
     }
   }
 
-  handleDelete = video_game => {
-    this.props.deleteVideoGame(video_game)
+  handleDelete = videoGame => {
+    this.props.deleteVideoGame(videoGame)
     this.setState({ sendRedirect: true })
   }
 
   render() {
     const { sendRedirect } = this.state
   
-    const { video_game } = this.props
+    const { videoGame } = this.props
 
   return(
     <div>
-      <VideoGameShowUI video_game={video_game} 
+      <VideoGameShowUI videoGame={videoGame} 
         handleDelete={this.handleDelete} />
       {sendRedirect && (
         <Redirect to ='/video_games' />
@@ -36,13 +36,13 @@ class VideoGameShow extends Component {
 }
 
 const mapStateToProps = (state, myProps) => {
-  const video_game = state.video_games.find(video_game => video_game.id === parseInt(myProps.match.params.video_gameId, 10))
+  const videoGame = state.videoGames.find(videoGame => videoGame.id === parseInt(myProps.match.params.videoGameId, 10))
 
-  if (video_game) {
-    return { video_game }
+  if (videoGame) {
+    return { videoGame }
   } else {
     return {
-      video_game: {}
+      videoGame: {}
     }
   }
 }
