@@ -25,7 +25,7 @@ class VideoGameShow extends Component {
 
   return(
     <div>
-      <VideoGameShowUI videoGame={videoGame} 
+      <VideoGameShowUI videoGame={videoGame}
         handleDelete={this.handleDelete} />
       {sendRedirect && (
         <Redirect to ='/video_games' />
