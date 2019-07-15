@@ -1,8 +1,9 @@
-import React from 'react'
-import VideoGameCard from './VideoGameCard'
+import React from 'react';
+import VideoGameCard from './VideoGameCard';
 
 const VideoGamesList = ({ videoGames }) => {
-  const renderVideoGames = videoGames.map((videoGame, i) =>
+  const renderVideoGames = videoGames.toLowerCase().filter.includes(videoGame => {
+    videoGame.name === videoGame.toLowerCase()}).map((videoGame, i) =>
     <VideoGameCard key={i} videoGame={videoGame} />
   )
 

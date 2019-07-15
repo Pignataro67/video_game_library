@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
-import * as actions from '../actions/videoGameActions'
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as actions from '../actions/videoGameActions';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import VideoGamesList from '../components/VideoGamesList'
-import Home from '../components/Home'
-import NavBar from '../components/NavBar'
-import VideoGameForm from '../containers/VideoGameForm'
-import VideoGameShow from './VideoGameShow'
+import VideoGamesList from '../components/VideoGamesList';
+import Home from '../components/Home';
+import NavBar from '../components/NavBar';
+import VideoGameForm from '../containers/VideoGameForm';
+import VideoGameShow from './VideoGameShow';
 // import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 class App extends Component {

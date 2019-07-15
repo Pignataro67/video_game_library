@@ -1,4 +1,4 @@
-import fetch from 'isomorphic-fetch';
+// import fetch from 'isomorphic-fetch';
 
 export const FETCH_VIDEO_GAMES = 'FETCH_VIDEO_GAMES'
 

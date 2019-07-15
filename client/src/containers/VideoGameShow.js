@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { Redirect } from 'react-router'
-import { deleteVideoGame, updateVideoGame } from '../actions/videoGameActions'
-import VideoGameShowUI from '../components/VideoGameShowUI'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Redirect } from 'react-router';
+import { deleteVideoGame, updateVideoGame } from '../actions/videoGameActions';
+import VideoGameShowUI from '../components/VideoGameShowUI';
 
 class VideoGameShow extends Component {
   constructor(props) {
@@ -51,4 +51,4 @@ const mapDispatchToProps = {
   deleteVideoGame, updateVideoGame
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(VideoGameShow)
+export default connect(mapStateToProps, mapDispatchToProps)(VideoGameShow);
