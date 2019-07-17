@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
-import * as actions from '../actions/videoGameActions'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as actions from '../actions/videoGameActions';
 
 class VideoGames extends Component {
   componentWillMount() {
@@ -50,5 +50,4 @@ class VideoGames extends Component {
     return {actions: bindActionCreators(actions, dispatch)}
   }
 
-  export default connect(mapStateToProps, mapDispatchToProps)(VideoGames)
-
+  export default connect(mapStateToProps, mapDispatchToProps)(VideoGames);

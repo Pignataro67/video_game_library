@@ -16,4 +16,4 @@ const VideoGamesList = ({ videoGames }) => {
   )
 }
 
-export default VideoGamesList
+export default VideoGamesList;

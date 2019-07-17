@@ -18,4 +18,4 @@ const VideoGameShowUI = ({ videoGame, handleDelete, }) =>
   <p><Link className='btn btn-primary' to={`/video_games/${videoGame.id}/edit`}>Edit</Link></p>
 </div>
 
-export default VideoGameShowUI
+export default VideoGameShowUI;
