@@ -1,11 +1,11 @@
-import React, { Component } from 'react'
-import { Route } from 'react-router-dom'
-import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
-import * as actions from '../actions/videoGameActions'
+import React, { Component } from 'react';
+import { Route } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as actions from '../actions/videoGameActions';
 // import VideoGameCard from '../components/VideoGameCard'
-import VideoGamesList from '../components/VideoGamesList'
-import VideoGameShow from '../containers/VideoGameShow'
+import VideoGamesList from '../components/VideoGamesList';
+import VideoGameShow from '../containers/VideoGameShow';
 
 class VideoGamesPage extends Component {
   componentWillMount() {
@@ -34,4 +34,4 @@ class VideoGamesPage extends Component {
     return {actions: bindActionCreators(actions, dispatch)}
   }
 
-  export default connect(mapStateToProps, mapDispatchToProps)(VideoGamesPage)
+  export default connect(mapStateToProps, mapDispatchToProps)(VideoGamesPage);

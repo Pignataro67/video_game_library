@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { createVideoGame, fetchVideoGame, updateVideoGame } from '../actions/videoGameActions'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { createVideoGame, fetchVideoGame, updateVideoGame } from '../actions/videoGameActions';
 
 class VideoGameForm extends Component {
   constructor(props) {
@@ -122,4 +122,4 @@ const mapStateToProps =(state, myProps) => {
   }
 }
 
-export default connect(mapStateToProps, { createVideoGame, fetchVideoGame, updateVideoGame})(VideoGameForm)
+export default connect(mapStateToProps, { createVideoGame, fetchVideoGame, updateVideoGame})(VideoGameForm);
