@@ -24,6 +24,6 @@ class VideoGameCard extends Component {
 }
 
 
-export default VideoGameCard
+export default VideoGameCard;
 
 // https:'x.kinja-static.com/assets/images/logos/placeholders/default.png'
