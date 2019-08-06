@@ -3,7 +3,6 @@ import { Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as actions from '../actions/videoGameActions';
-// import VideoGameCard from '../components/VideoGameCard'
 import VideoGamesList from '../components/VideoGamesList';
 import VideoGameShow from '../containers/VideoGameShow';
 
