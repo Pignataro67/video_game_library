@@ -1,5 +1,4 @@
 // import fetch from 'isomorphic-fetch';
-
 export const FETCH_VIDEO_GAMES = 'FETCH_VIDEO_GAMES'
 
 const url = '/api/video_games'
@@ -74,11 +73,9 @@ export const createVideoGame = (video_game, history) => {
       })
       .catch(error => console.log(error))
   }
-  // console.log("E")
 }
 
 export const updateVideoGame = video_game => {
-  // console.log('updateVideoGame is being called')
   return dispatch => {
     return fetch(url + `/${video_game.id}`, {
       method: 'PUT',

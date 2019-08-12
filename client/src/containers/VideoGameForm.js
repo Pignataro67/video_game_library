@@ -122,4 +122,4 @@ const mapStateToProps =(state, myProps) => {
   }
 }
 
-export default connect(mapStateToProps, { createVideoGame, fetchVideoGame, updateVideoGame})(VideoGameForm);
+export default connect(mapStateToProps, {createVideoGame, fetchVideoGame, updateVideoGame})(VideoGameForm);
