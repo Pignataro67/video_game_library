@@ -9,7 +9,7 @@ body {
 }
 
 .VideoGameCard {
-  padding-bottom: 30px;
+  padding-bottom: 40px;
   border-style: solid;
   border-width: thin;
   margin: 10px;
@@ -27,7 +27,7 @@ body {
 }
 
 .home-image {
-  max-width: 65%;
+  max-width: 70%;
 }
 
 code {
