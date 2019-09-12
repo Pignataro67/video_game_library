@@ -13,5 +13,3 @@ const Home = () =>
   </div>
 
 export default Home;
-
-// https://i.pinimg.com/originals/f6/17/92/f61792692722c6db3521d931d3f6adb4.jpg"

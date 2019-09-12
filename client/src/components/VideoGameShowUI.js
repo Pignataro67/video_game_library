@@ -12,6 +12,7 @@ const VideoGameShowUI = ({ videoGame, handleDelete, }) =>
      style={{height: '250px', width: '250px', margin: 'auto'}} alt={videoGame.name} />
    )
   }
+
   <p>Description: {videoGame.description}</p>
   <p>Age Range: {videoGame.age_range}</p>
   <p><button className='btn btn-primary' onClick={() => handleDelete(videoGame)}>Remove Video Game</button></p>

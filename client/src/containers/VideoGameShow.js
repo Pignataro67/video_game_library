@@ -31,7 +31,7 @@ class VideoGameShow extends Component {
         <Redirect to ='/video_games' />
       )}
     </div>
-    )
+    );
   }
 }
 

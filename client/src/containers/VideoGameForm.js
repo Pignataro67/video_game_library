@@ -23,7 +23,7 @@ class VideoGameForm extends Component {
       age_range: nextProps.videoGame.age_range,
       pic_url: nextProps.videoGame.pic_url,
       description: nextProps.videoGame.description
-    })
+    });
   }
 
   componentDidMount = () => {
@@ -37,7 +37,7 @@ class VideoGameForm extends Component {
     const {name, value } = e.target
     this.setState({
       [name]: value
-    })
+    });
   }
 
   handleSubmit = e => {
@@ -104,7 +104,7 @@ class VideoGameForm extends Component {
             </div>      
         </form>
       </div>
-      )
+    );
   }
 }
 

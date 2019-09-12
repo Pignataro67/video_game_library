@@ -13,7 +13,7 @@ const VideoGamesList = ({ videoGames }) => {
         {renderVideoGames}
         </div>
       </div>
-  )
+  );
 }
 
 export default VideoGamesList;

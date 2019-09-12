@@ -21,13 +21,13 @@ class VideoGames extends Component {
         <p>Age Range: {videoGame.age_range}</p>
         <img src={`${videoGame.pic_url}`} style={{height: '400px', width: '300px', margin: 'auto'}} alt={videoGame.name} />
       </div>
-      )
+      );
 
     return(
       <div>
         {renderVideoGames}
       </div>
-      )
+      );
     }
   }
 
