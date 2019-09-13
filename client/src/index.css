@@ -1,6 +1,6 @@
 body {
-  margin: 0;
-  padding: 0;
+  margin: 2;
+  padding: 5;
   font-family: 
     sans-serif;
   background-color: pink;  
@@ -9,10 +9,10 @@ body {
 }
 
 .VideoGameCard {
-  padding-bottom: 40px;
+  padding-bottom: 50px;
   border-style: solid;
-  border-width: thin;
-  margin: 10px;
+  border-width: thick;
+  margin: 20px;
   border-color: #969696;
 }
 
