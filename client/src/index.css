@@ -11,7 +11,7 @@ body {
 .VideoGameCard {
   padding-bottom: 50px;
   border-style: solid;
-  border-width: thick;
+  border-width: thin;
   margin: 20px;
   border-color: #969696;
 }
