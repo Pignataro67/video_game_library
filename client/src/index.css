@@ -1,6 +1,6 @@
 body {
-  margin: 2;
-  padding: 5;
+  margin: 4;
+  padding: 7;
   font-family: 
     sans-serif;
   background-color: pink;  
@@ -9,10 +9,10 @@ body {
 }
 
 .VideoGameCard {
-  padding-bottom: 50px;
-  border-style: solid;
-  border-width: thin;
-  margin: 20px;
+  padding-bottom: 75px;
+  border-style: double;
+  border-width: thick;
+  margin: 55px;
   border-color: #969696;
 }
 
@@ -22,12 +22,12 @@ body {
 
 .btn {
   background-color: green;
-  color: white;
+  color: black;
   border: none;
 }
 
 .home-image {
-  max-width: 70%;
+  max-width: 63%;
 }
 
 code {
