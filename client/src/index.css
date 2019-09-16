@@ -1,6 +1,6 @@
 body {
-  margin: 4;
-  padding: 7;
+  margin: 5;
+  padding: 10;
   font-family: 
     sans-serif;
   background-color: pink;  
@@ -9,7 +9,7 @@ body {
 }
 
 .VideoGameCard {
-  padding-bottom: 75px;
+  padding-bottom: 100px;
   border-style: double;
   border-width: thick;
   margin: 55px;
@@ -22,8 +22,8 @@ body {
 
 .btn {
   background-color: green;
-  color: black;
-  border: none;
+  color: blue;
+  border: solid;
 }
 
 .home-image {
